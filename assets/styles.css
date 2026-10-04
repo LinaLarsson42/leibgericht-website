@@ -1,0 +1,165 @@
+/* Leibgericht – Website. Farben wie in der App (hell/dunkel). Schriften lokal
+   eingebunden, damit beim Besuch keine Daten an Dritte (z. B. Google) gehen. */
+
+@font-face { font-family: 'Fraunces'; src: url('fonts/Fraunces_600SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('fonts/Inter_400Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('fonts/Inter_600SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+
+:root {
+  --background: #FBF7F0;
+  --surface: #FFFFFF;
+  --surface-muted: #F3ECE1;
+  --border: #E8DFD2;
+  --text: #2B2622;
+  --text-muted: #7A6F64;
+  --primary: #2F5D50;
+  --on-primary: #FBF7F0;
+  --primary-soft: #E3EDE7;
+  --accent: #C4553B;
+  --accent-text: #B5482F;
+  --accent-soft: #F7E3DC;
+  --radius: 20px;
+  --max-width: 1120px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #161412;
+    --surface: #211E1B;
+    --surface-muted: #2B2723;
+    --border: #3A342E;
+    --text: #F3EEE7;
+    --text-muted: #A89E92;
+    --primary: #8FC4A6;
+    --on-primary: #161412;
+    --primary-soft: #22332B;
+    --accent: #E07A5F;
+    --accent-text: #E8907A;
+    --accent-soft: #3A2620;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--primary); }
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2.3rem, 5.5vw, 3.8rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1em; }
+
+.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 720px) { .container { padding: 0 32px; } }
+
+.skip-link { position: absolute; left: -999px; top: 8px; background: var(--primary); color: var(--on-primary); padding: 8px 16px; border-radius: 8px; }
+.skip-link:focus { left: 16px; z-index: 10; }
+
+/* Kopfzeile */
+.site-header { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--background) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.site-header .container { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-family: 'Fraunces', Georgia, serif; font-size: 1.25rem; }
+.brand img { width: 36px; height: 36px; border-radius: 10px; }
+.site-nav { display: flex; gap: 20px; }
+.site-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+.site-nav a:hover { color: var(--text); }
+@media (max-width: 640px) { .site-nav { display: none; } }
+
+/* Buttons */
+.button { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; border-radius: 14px; font-weight: 600; text-decoration: none; border: 0; font-size: 1rem; }
+.button-primary { background: var(--primary); color: var(--on-primary); }
+.button-secondary { background: var(--primary-soft); color: var(--primary); }
+.button[aria-disabled="true"] { cursor: default; }
+.button svg { width: 22px; height: 22px; }
+
+/* Hero */
+.hero { padding: 56px 0 40px; overflow: hidden; }
+.hero .container { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) { .hero .container { grid-template-columns: 1.1fr 0.9fr; } .hero { padding: 88px 0 72px; } }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-text); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+.hero-lead { font-size: 1.2rem; color: var(--text-muted); max-width: 34em; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 20px; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; margin: 0; list-style: none; color: var(--text-muted); font-size: 0.95rem; }
+.hero-facts li::before { content: '✓'; color: var(--primary); font-weight: 600; margin-right: 6px; }
+.hero-visual { position: relative; display: flex; justify-content: center; }
+.hero-visual::before { content: ''; position: absolute; inset: 8% 2% auto; height: 80%; border-radius: 50%; background: radial-gradient(circle, var(--primary-soft) 0%, transparent 70%); z-index: 0; }
+
+/* Geräte-Rahmen mit Screenshot-Platzhaltern */
+.device { position: relative; z-index: 1; margin: 0; }
+.device .screen { border-radius: 30px; border: 8px solid var(--text); background: var(--surface); overflow: hidden; box-shadow: 0 24px 60px -24px rgba(43, 38, 34, 0.45); }
+.device.phone .screen { width: min(280px, 72vw); aspect-ratio: 9 / 19.5; }
+.device.tablet { width: min(760px, 100%); }
+.device.tablet .screen { width: 100%; aspect-ratio: 16 / 10; border-radius: 24px; }
+.device img { width: 100%; height: 100%; object-fit: cover; }
+.placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 24px; color: var(--text-muted); background: repeating-linear-gradient(135deg, var(--surface-muted) 0 12px, var(--surface) 12px 24px); font-size: 0.95rem; }
+.placeholder strong { color: var(--text); font-family: 'Fraunces', Georgia, serif; font-size: 1.15rem; font-weight: 600; }
+.device figcaption { text-align: center; margin-top: 14px; color: var(--text-muted); font-size: 0.95rem; }
+
+/* Abschnitte */
+section { padding: 64px 0; }
+.section-muted { background: var(--surface-muted); }
+.section-head { max-width: 640px; margin-bottom: 40px; }
+.section-head p { color: var(--text-muted); font-size: 1.1rem; }
+
+.problem-sources { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
+.problem-sources li { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 0.95rem; }
+
+.feature-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .feature-grid { grid-template-columns: repeat(3, 1fr); } }
+.feature { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.feature .icon { width: 48px; height: 48px; border-radius: 14px; background: var(--primary-soft); color: var(--primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.feature .icon svg { width: 26px; height: 26px; }
+.feature p { color: var(--text-muted); margin: 0; }
+
+.gallery { display: flex; gap: 24px; overflow-x: auto; padding: 8px 4px 24px; scroll-snap-type: x mandatory; }
+.gallery .device { scroll-snap-align: center; flex: 0 0 auto; }
+.gallery .device.phone .screen { width: 240px; }
+.tablet-showcase { display: flex; justify-content: center; margin-top: 24px; }
+
+.privacy { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 900px) { .privacy { grid-template-columns: 1fr 1fr; } }
+.privacy-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.privacy-list li { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; }
+.privacy-list .check { flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--primary); color: var(--on-primary); display: flex; align-items: center; justify-content: center; font-weight: 600; }
+.privacy-list strong { display: block; }
+.privacy-list span { color: var(--text-muted); }
+.privacy-quote { font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.3; color: var(--primary); }
+.privacy-quote .heart { color: var(--accent); }
+
+.faq { max-width: 760px; }
+.faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 4px 20px; margin-bottom: 12px; }
+.faq summary { cursor: pointer; font-weight: 600; padding: 14px 0; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--primary); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: '–'; }
+.faq details p { color: var(--text-muted); }
+
+.cta { text-align: center; }
+.cta .container { background: var(--primary); color: var(--on-primary); border-radius: 28px; padding: 48px 24px; max-width: calc(var(--max-width) - 64px); }
+.cta h2 { color: var(--on-primary); }
+.cta p { opacity: 0.85; max-width: 34em; margin: 0 auto 24px; }
+.cta .button { background: var(--on-primary); color: var(--primary); }
+
+.site-footer { padding: 40px 0 56px; color: var(--text-muted); font-size: 0.95rem; }
+.site-footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+.site-footer nav { display: flex; gap: 20px; }
+
+/* Rechtstexte */
+.legal { padding: 48px 0 72px; }
+.legal .container { max-width: 760px; }
+.legal h2 { font-size: 1.5rem; margin-top: 2em; }
+.legal .draft-note { background: var(--accent-soft); border-radius: 14px; padding: 14px 18px; color: var(--text); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
