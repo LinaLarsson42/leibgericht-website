@@ -14,8 +14,8 @@ die Datenschutzerklärung unter `…/datenschutz.html` (so ist sie auch in der A
 - [ ] Screenshot-Platzhalter ersetzen: Bilder nach `assets/img/screenshots/` legen und die
       `<div class="screen placeholder">` in `index.html` durch `<img src="…" alt="…">` ersetzen
       (Kommentare an den Stellen zeigen, wo).
-- [ ] In `datenschutz.html` Namen und Kontaktadresse ergänzen, Entwurfshinweis entfernen,
-      Text prüfen (lassen).
+- [x] In `datenschutz.html` Namen und Kontaktadresse ergänzen, Entwurfshinweis entfernen.
+- [ ] Datenschutzerklärung rechtlich prüfen (lassen).
 - [ ] Impressum klären (für eine kostenlose Hobby-App ohne Einnahmen vermutlich nicht nötig,
       aber nicht eindeutig) und ggf. ergänzen.
 - [ ] „Bald bei Google Play“ durch den Store-Link ersetzen.
